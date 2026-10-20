@@ -84,11 +84,25 @@ def check_site() -> None:
         sys.exit(f"Fichiers référencés introuvables : {', '.join(missing)}")
 
 
+def bust_cache() -> None:
+    """Ajoute ?v=<empreinte> aux feuilles de style et scripts pour que chaque publication soit vue sans vider le cache."""
+    import hashlib
+    index = DIST / "index.html"
+    html = index.read_text(encoding="utf-8")
+    for asset in ("assets/style.css", "assets/app.js", "assets/decor.js"):
+        path = DIST / asset
+        if path.exists():
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()[:10]
+            html = html.replace(f'"{asset}"', f'"{asset}?v={digest}"')
+    index.write_text(html, encoding="utf-8")
+
+
 def main() -> None:
     check_site()
     if DIST.exists():
         shutil.rmtree(DIST)
     shutil.copytree(SITE, DIST)
+    bust_cache()
     price = live_price()
     if price:
         (DIST / "data" / "cours.json").write_text(json.dumps(price, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
