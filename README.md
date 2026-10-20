@@ -13,7 +13,7 @@ Page d'aide à la décision publiée sous **https://nogues.app/or/** : quand ven
 
 Les saisies (bijoux, seuils, devis, check-list) restent dans le navigateur du visiteur (`localStorage`). La page est marquée `noindex`.
 
-Le décor animé est purement vectoriel (SVG et CSS, environ 6 Ko) ; il se fige si l'appareil demande de réduire les animations.
+Le bandeau alterne trois planches animées dans l'esprit de nogues.app : les lingots s'empilent, le graphique se construit, l'enregistreur trace le cours. Chacune est effacée à la gomme avant la suivante. Canvas sans bibliothèque, pause hors écran, image fixe si l'appareil demande de réduire les animations, rien sur écran étroit (moins de 700 px) ; les montants suivent le cours du jour.
 
 ## Arborescence
 
@@ -22,7 +22,7 @@ site/                 fichiers publiés
   index.html
   assets/style.css
   assets/app.js       calculs, graphique SVG, outils (sans dépendance)
-  assets/decor.js     décor animé : courbe du cours et anneaux (bandeau), guillochés et paillettes (fond)
+  assets/decor.js     planches animées du bandeau : lingots, graphique, enregistreur
   data/cours.json     cours de référence, remplacé à chaque publication
 scripts/build.py      copie site/ vers dist/ et relève le cours du jour
 .github/workflows/deploy.yml

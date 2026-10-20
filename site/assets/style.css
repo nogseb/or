@@ -26,8 +26,6 @@
   --bad: #ac3d2b;
   --bad-bg: #f6e1dc;
   --focus: #2f6fd6;
-  --decor-op: 0.17;
-  --sparkle-op: 0.5;
 
   --f-display: "Young Serif", Georgia, "Times New Roman", serif;
   --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -45,7 +43,7 @@
     --hero-cell: rgba(255, 244, 214, 0.26); --hero-deep: #4e3505; --hero-shine: #fff3cf; --hero-ondark: #e6cf93;
     --brass: #dcb655; --gold: #dcb655; --gold-soft: rgba(220, 182, 85, 0.16);
     --good: #62c494; --good-bg: #13301f; --warn: #e6ac3d; --warn-bg: #33270f; --bad: #f08470; --bad-bg: #3a1a14;
-    --focus: #7fb0ff; --decor-op: 0.11; --sparkle-op: 0.55;
+    --focus: #7fb0ff;
     color-scheme: dark;
   }
 }
@@ -55,7 +53,7 @@
   --hero-cell: rgba(255, 244, 214, 0.26); --hero-deep: #4e3505; --hero-shine: #fff3cf; --hero-ondark: #e6cf93;
   --brass: #dcb655; --gold: #dcb655; --gold-soft: rgba(220, 182, 85, 0.16);
   --good: #62c494; --good-bg: #13301f; --warn: #e6ac3d; --warn-bg: #33270f; --bad: #f08470; --bad-bg: #3a1a14;
-  --focus: #7fb0ff; --decor-op: 0.11; --sparkle-op: 0.55;
+  --focus: #7fb0ff;
   color-scheme: dark;
 }
 
@@ -103,12 +101,6 @@ sup.ref a { text-decoration: none; font-family: var(--f-num); }
   background: linear-gradient(115deg, var(--hero-1) 0%, var(--hero-1) 30%, var(--hero-2) 100%);
   color: var(--hero-ink); position: relative; overflow: hidden; isolation: isolate;
 }
-.band::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: linear-gradient(105deg, transparent 38%, color-mix(in srgb, var(--hero-shine) 42%, transparent) 50%, transparent 62%);
-  transform: translateX(-100%); animation: lustre 11s ease-in-out 1.2s infinite;
-}
-@keyframes lustre { 0% { transform: translateX(-100%); } 42%, 100% { transform: translateX(100%); } }
 .band > .wrap { position: relative; z-index: 1; }
 .band .wrap { padding-block: var(--s-7) var(--s-6); display: grid; gap: var(--s-5); }
 .band .eyebrow { color: var(--hero-muted); }
@@ -345,70 +337,8 @@ footer.sources ol { margin: 0; padding-left: 1.6rem; columns: 2 22rem; column-ga
 footer.sources li { break-inside: avoid; margin-bottom: 0.3rem; overflow-wrap: anywhere; }
 footer.sources .disclaimer { font-size: 0.82rem; color: var(--muted); max-width: 80ch; }
 
-/* ---------- Décor animé ---------- */
-.decor { pointer-events: none; }
-.decor-page { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
-.guilloche { position: absolute; left: -15%; width: 130%; opacity: var(--decor-op); }
-.guilloche.g1 { top: 16%; transform: rotate(-6deg); }
-.guilloche.g2 { bottom: 8%; transform: rotate(4deg); }
-.guilloche svg { display: block; animation: glisse 30s linear infinite; will-change: transform; }
-.guilloche.g2 svg { animation-duration: 42s; animation-direction: reverse; }
-.g-line { fill: none; stroke: var(--gold); stroke-width: 1; }
-@keyframes glisse { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--p))); } }
-
-.paillette {
-  position: absolute; width: var(--s); height: var(--s); color: var(--gold); opacity: 0;
-  animation: scintille var(--d) ease-in-out var(--delay) infinite;
-}
-.paillette svg { display: block; width: 100%; height: 100%; fill: currentColor; }
-.decor-band .paillette { color: var(--hero-shine); }
-@keyframes scintille {
-  0%, 100% { opacity: 0; transform: translateY(0) scale(0.4) rotate(0deg); }
-  45% { opacity: var(--sparkle-op); transform: translateY(-14px) scale(1) rotate(45deg); }
-  70% { opacity: 0; transform: translateY(-22px) scale(0.6) rotate(90deg); }
-}
-
-.decor-band { position: absolute; inset: 0; z-index: 0; }
-.decor-curve {
-  position: absolute; top: 14px; right: max(8px, calc((100% - 68rem) / 2));
-  width: min(34%, 430px); height: auto; overflow: visible; opacity: 0.95;
-}
-.c-stop1 { stop-color: var(--hero-deep); stop-opacity: 0.16; }
-.c-stop2 { stop-color: var(--hero-deep); stop-opacity: 0; }
-.c-grid { stroke: var(--hero-deep); stroke-opacity: 0.25; stroke-width: 1; stroke-dasharray: 2 6; }
-.c-line { fill: none; stroke: var(--hero-deep); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.6; }
-.c-line.draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: trace 3.2s cubic-bezier(0.6, 0.1, 0.2, 1) 0.3s forwards; }
-@keyframes trace { to { stroke-dashoffset: 0; } }
-.c-area { opacity: 0; animation: apparait 1.6s ease-out 2.2s forwards; }
-@keyframes apparait { to { opacity: 1; } }
-.c-end { fill: none; stroke: var(--hero-deep); stroke-opacity: 0.6; stroke-width: 1.2; }
-.c-dot { fill: var(--hero-shine); stroke: var(--hero-deep); stroke-opacity: 0.5; stroke-width: 1; }
-.c-halo { fill: var(--hero-shine); opacity: 0.55; transform-box: fill-box; transform-origin: center; animation: halo 2.4s ease-in-out infinite; }
-@keyframes halo { 50% { transform: scale(1.8); opacity: 0.1; } }
-
-.anneau { position: absolute; animation: flotte var(--d, 12s) ease-in-out infinite; }
-.anneau svg { display: block; width: 100%; height: auto; overflow: visible; }
-.anneau.a1 { width: 112px; top: 22px; right: calc(max(8px, (100% - 68rem) / 2) + 1%); --d: 12s; }
-.anneau.a2 { width: 64px; top: 70px; right: calc(max(8px, (100% - 68rem) / 2) + 150px); --d: 9s; animation-delay: -4s; opacity: 0.8; }
-.r-body { fill: none; stroke: var(--hero-deep); stroke-width: 7; opacity: 0.32; }
-.r-edge { fill: none; stroke: var(--hero-shine); stroke-width: 1.4; opacity: 0.75; transform: translateY(-3px); }
-.r-glint { fill: none; stroke: var(--hero-shine); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 10 90; opacity: 0.85; animation: reflet 5s linear infinite; }
-@keyframes flotte { 0%, 100% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-9px) rotate(5deg); } }
-@keyframes reflet { to { stroke-dashoffset: -100; } }
-
-@media (max-width: 760px) {
-  .decor-curve { width: 78%; opacity: 0.35; top: 40px; }
-  .anneau.a1 { width: 60px; top: 6px; opacity: 0.5; }
-  .anneau.a2 { display: none; }
-  .guilloche { left: -40%; width: 180%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .decor *, .decor *::before, .band::before { animation: none !important; }
-  .band::before { display: none; }
-  .paillette { opacity: calc(var(--sparkle-op) * 0.6); }
-  .decor-page .paillette { display: none; }
-  .c-area { opacity: 1; }
-}
+/* ---------- Planches animées du bandeau (assets/decor.js) ---------- */
+.band-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; z-index: 0; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
