@@ -13,6 +13,8 @@ Page d'aide à la décision publiée sous **https://nogues.app/or/** : quand ven
 
 Les saisies (bijoux, seuils, devis, check-list) restent dans le navigateur du visiteur (`localStorage`). La page est marquée `noindex`.
 
+Le décor animé est purement vectoriel (SVG et CSS, environ 6 Ko) ; il se fige si l'appareil demande de réduire les animations.
+
 ## Arborescence
 
 ```
@@ -20,6 +22,7 @@ site/                 fichiers publiés
   index.html
   assets/style.css
   assets/app.js       calculs, graphique SVG, outils (sans dépendance)
+  assets/decor.js     décor animé : courbe du cours et anneaux (bandeau), guillochés et paillettes (fond)
   data/cours.json     cours de référence, remplacé à chaque publication
 scripts/build.py      copie site/ vers dist/ et relève le cours du jour
 .github/workflows/deploy.yml

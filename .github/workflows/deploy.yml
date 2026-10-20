@@ -48,7 +48,7 @@ jobs:
           python-version: "3.12"
 
       - name: Vérifier le script de la page
-        run: node --check site/assets/app.js
+        run: node --check site/assets/app.js && node --check site/assets/decor.js
 
       - name: Générer le site et relever le cours du jour
         run: |
