@@ -330,7 +330,7 @@
     const top = 14, bottom = br.top - r.top - 12;
     // Sur écran étroit, le texte occupe toute la largeur du bandeau : pas de planche, pour garder la lecture nette.
     S = W < 700 ? null : { x: l + (rr - l) * 0.56, y: top, w: (rr - l) * 0.44, h: bottom - top };
-    kk = Math.max(0.8, Math.min(1.15, S.w / 440));
+    if (S) kk = Math.max(0.8, Math.min(1.15, S.w / 440));
   }
   function render(p, t) {
     if (!S || S.w < 60 || S.h < 80) { ctx.clearRect(0, 0, W, H); return; }

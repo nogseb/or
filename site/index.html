@@ -60,6 +60,7 @@
 <nav class="tabs" aria-label="Sections">
   <div class="wrap">
     <a href="#bref">En bref</a>
+    <a href="#lot">Mon lot</a>
     <a href="#quand">Quand vendre</a>
     <a href="#ou">Où vendre</a>
     <a href="#sources">Sources</a>
@@ -87,7 +88,47 @@
   </div>
   <div class="reco">
     <p class="tag">Recommandation · à arbitrer</p>
-    <p><strong>Vendre en deux tranches.</strong> Faire chiffrer quatre ou cinq comptoirs le même matin, vendre la moitié des bijoux dès qu'une offre atteint 85 % de la valeur métal (au moins <strong><span data-bind="t85">75,61</span> €/g</strong> en 18 carats au cours actuel), puis vendre le solde si l'or fin repasse au-dessus de 125 €/g, ou au plus tard fin mars 2027. Les seuils se règlent dans la section « Quand vendre ».</p>
+    <p><strong>Vendre en deux tranches.</strong> Tranche 1 dès maintenant : l'or sans pierres (collier, chaîne, créoles), <span data-bind="t1G">38,0</span> g, soit environ <span data-bind="t185">2 778 €</span>, dès qu'un comptoir offre au moins <strong><span data-bind="t85">75,61</span> €/g</strong> en 18 carats. Tranche 2 plus tard : pendentifs, créoles fines, alliances, scarabée et bracelet (<span data-bind="t2G">20,2</span> g), après vérification des poinçons, si l'or pur repasse au-dessus de 125 €/g ou au plus tard fin mars 2027. Les bagues serties n° 6 et 7 sont conservées. Le détail est dans <a href="#lot">Mon lot</a>.</p>
+  </div>
+</section>
+
+<!-- ============ MON LOT ============ -->
+<section class="wrap section" id="lot" aria-labelledby="t-lot">
+  <header class="sec-head">
+    <p class="eyebrow">Inventaire · pesées du 25 octobre 2026</p>
+    <h2 id="t-lot">Mon lot</h2>
+    <p>Douze bijoux pesés un à un, puis ensemble : 73 g sur la balance. Les montants suivent le cours du jour et supposent de l'or 18 carats, à confirmer par les poinçons.</p>
+  </header>
+  <div class="lotsum">
+    <div class="all"><p class="k">À vendre</p><p class="v"><span data-bind="lotG">58,2</span> g</p><p class="d">≈ <span data-bind="lot85">4 255 €</span> avec une offre à 85 %</p></div>
+    <div><p class="k"><span class="pill good">Tranche 1</span> maintenant</p><p class="v"><span data-bind="t1G">38,0</span> g</p><p class="d">≈ <span data-bind="t185">2 778 €</span> · collier, chaîne, créoles</p></div>
+    <div><p class="k"><span class="pill warn">Tranche 2</span> plus tard</p><p class="v"><span data-bind="t2G">20,2</span> g</p><p class="d">≈ <span data-bind="t285">1 477 €</span> · après vérifications</p></div>
+    <div><p class="k"><span class="pill neutral">Conservé</span></p><p class="v"><span data-bind="keptG">10,3</span> g</p><p class="d">bagues serties n° 6 et 7</p></div>
+  </div>
+  <div class="table-wrap">
+    <table class="inv">
+      <thead><tr><th class="n">N°</th><th>Bijou</th><th class="n">Pesée</th><th class="n">Or estimé</th><th>Destination</th><th>À vérifier</th><th class="n">Offre à 85 %</th></tr></thead>
+      <tbody id="inv-body"></tbody>
+      <tfoot><tr><th></th><th>Total à vendre</th><th class="n">73 g pesés</th><th class="n"><span data-bind="lotG">58,2</span> g</th><th colspan="2"></th><th class="n"><span data-bind="lot85">4 255 €</span></th></tr></tfoot>
+    </table>
+  </div>
+  <div class="rules">
+    <div>
+      <h3>Comment l'or est estimé</h3>
+      <ul>
+        <li><strong>Pesée</strong> : balance de cuisine au gramme près. La pesée de l'ensemble (73 g, sachet compris) confirme la somme des pesées séparées.</li>
+        <li><strong>Or estimé</strong> : pesée moins le sachet des alliances (environ 2 g) et le poids estimé des pierres (environ 2,5 g).</li>
+        <li><strong>Titre</strong> : or 18 carats supposé pour tout le lot. Le comptoir pèse au centième de gramme et teste chaque pièce.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Fiscalité du lot</h3>
+      <ul>
+        <li><strong>Une seule vente</strong> : <span data-bind="taxLine">à 85 %, le lot reste sous le seuil de 5 000 € : pas de taxe.</span></li>
+        <li><strong>Seuil à surveiller</strong> : il serait dépassé si l'or pur montait au-dessus de <span data-bind="seuil90">127</span> €/g avec une offre à 90 %, ou de <span data-bind="seuil85">135</span> €/g avec une offre à 85 %.</li>
+        <li><strong>Hors inventaire</strong> : trois bagues confiées par une amie (7 g), métal à faire tester, vente séparée avec son propre reçu.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -183,7 +224,7 @@
     <div class="block">
       <h3>Ce que valent vos bijoux aujourd'hui</h3>
       <p class="intro">Pesez chaque bijou sur une balance de cuisine précise au dixième de gramme et relevez le poinçon : 750 pour l'or 18 carats (en France, poinçon tête d'aigle), 585 pour le 14 carats, 375 pour le 9 carats. Retirez du poids estimé les pierres et les parties non or.</p>
-      <p class="example" id="lots-example">Exemple à remplacer par vos pesées.</p>
+      <p class="example" id="lots-example">Pré-rempli avec votre inventaire du 25 octobre 2026 : les dix bijoux à vendre, en poids d'or estimé. Modifiable ligne par ligne.</p>
     </div>
     <div class="grid-2">
       <div class="lots">
@@ -191,7 +232,7 @@
         <div class="lots" id="lots"></div>
         <div class="row-actions">
           <button type="button" class="btn secondary" id="lot-add">Ajouter un bijou</button>
-          <button type="button" class="btn secondary" id="lot-reset">Remettre l'exemple</button>
+          <button type="button" class="btn secondary" id="lot-reset">Revenir à l'inventaire</button>
         </div>
       </div>
       <dl class="totals" id="totals"></dl>

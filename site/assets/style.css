@@ -243,6 +243,19 @@ td .sub { display: block; color: var(--muted); font-size: 0.84rem; }
 .pill.neutral { background: var(--surface-2); color: var(--muted); }
 .pill.gold { background: var(--gold-soft); color: var(--brass); }
 
+/* Mon lot */
+.lotsum { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); }
+.lotsum > div { display: grid; gap: 0.2rem; align-content: start; padding: var(--s-4); border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+.lotsum > div.all { background: color-mix(in srgb, var(--hero-1) 26%, var(--surface)); border-color: color-mix(in srgb, var(--hero-2) 55%, transparent); }
+.lotsum .k { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+.lotsum .v { font-family: var(--f-num); font-variant-numeric: tabular-nums; font-size: 1.6rem; font-weight: 500; line-height: 1.15; }
+.lotsum .d { font-size: 0.85rem; color: var(--muted); }
+table.inv { min-width: 56rem; }
+.inv tbody tr.kept td { color: var(--muted); }
+.inv td:nth-child(5) { white-space: nowrap; }
+.inv tfoot th { padding: 0.7rem 0.85rem; text-align: left; font-size: 0.92rem; background: var(--surface-2); border-top: 1px solid var(--line); }
+.inv tfoot th.n { text-align: right; font-family: var(--f-num); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
 /* Formulaires */
 .grid-2 { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: var(--s-5); align-items: start; }
 .field { display: grid; gap: 0.3rem; }
@@ -278,7 +291,7 @@ input[type="number"] { font-family: var(--f-num); font-variant-numeric: tabular-
 .totals dt { color: var(--muted); }
 .totals dd { margin: 0; font-family: var(--f-num); font-variant-numeric: tabular-nums; font-weight: 500; text-align: right; }
 .totals .em dd { color: var(--brass); font-size: 1.1rem; }
-.example { font-size: 0.8rem; color: var(--warn); }
+.example { font-size: 0.82rem; color: var(--muted); }
 
 .levers { display: grid; gap: var(--s-3); }
 .lever { display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr) 6.5rem; gap: var(--s-3); align-items: center; }
@@ -346,6 +359,7 @@ footer.sources .disclaimer { font-size: 0.82rem; color: var(--muted); max-width:
   .cell:nth-child(3) { border-left: 0; }
   .cell:nth-child(n+3) { border-top: 1px solid var(--hero-line); }
   .facts, .reading, .checks { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
+  .lotsum { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid-2 { grid-template-columns: minmax(0, 1fr); }
   .scale { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rules { grid-template-columns: minmax(0, 1fr); }

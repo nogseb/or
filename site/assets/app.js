@@ -43,18 +43,31 @@
     { id: 'placeor', name: "Place de l'Or" },
     { id: 'autre', name: 'Autre acheteur' }
   ];
-  const DEFAULT_LOTS = [
-    { name: 'Alliance', carat: '18', g: 4.0 },
-    { name: 'Bague fine', carat: '18', g: 3.5 },
-    { name: 'Chevalière', carat: '18', g: 6.0 },
-    { name: 'Bracelet gourmette', carat: '18', g: 14.0 },
-    { name: 'Bracelet jonc', carat: '18', g: 9.5 }
+  // Inventaire du 25 octobre 2026 : pesées au gramme près ; or estimé = pesée moins sachet et pierres.
+  // lot : 1 = tranche 1 (maintenant), 2 = tranche 2 (plus tard), 0 = conservé.
+  const INVENTAIRE = [
+    { n: 1, name: 'Deux pendentifs figurines et un anneau ouvert', short: 'Pendentifs figurines', pese: 6, or: 6, lot: 2, check: 'Poinçon : peut-être achetés à l’étranger (9, 14 ou 22 carats)' },
+    { n: 2, name: 'Créoles fines et trois anneaux fins plus sombres', short: 'Créoles fines et anneaux', pese: 3, or: 2.5, lot: 2, check: 'Anneaux sombres : or, argent ou plaqué ?' },
+    { n: 3, name: 'Deux alliances en or blanc, en sachet', short: 'Alliances or blanc', pese: 8, or: 6, lot: 2, note: 'sachet compris', check: 'Repeser hors sachet ; tête d’aigle (or) ou tête de chien (platine)' },
+    { n: 4, name: 'Collier épais, maille plate, fermoir mousqueton', short: 'Collier épais', pese: 21, or: 21, lot: 1, check: 'Poinçon sur le fermoir' },
+    { n: 5, name: 'Pendentif scarabée, pierres bleues', short: 'Pendentif scarabée', pese: 2, or: 1.5, lot: 2, check: 'Poinçon ; poids des pierres déduit' },
+    { n: 6, name: 'Bague croisée sertie de petites pierres blanches', short: 'Bague croisée', pese: 4, or: 3.8, lot: 0, check: '' },
+    { n: 7, name: 'Bague pavée d’une dizaine de pierres blanches', short: 'Bague pavée', pese: 7, or: 6.5, lot: 0, check: '' },
+    { n: 8, name: 'Chaîne fine, même maille que le n° 4', short: 'Chaîne fine', pese: 6, or: 6, lot: 1, check: 'Poinçon sur le fermoir' },
+    { n: 9, name: 'Bracelet à trois pierres ovales bleu foncé', short: 'Bracelet pierres bleues', pese: 5, or: 4.2, lot: 2, check: 'Faire chiffrer aussi comme bijou (saphirs ?)' },
+    { n: 10, name: 'Paire de créoles épaisses', short: 'Créoles épaisses', pese: 6, or: 6, lot: 1, check: 'Poinçon' },
+    { n: 11, name: 'Deux demi-créoles à poussettes et trois créoles fines', short: 'Demi-créoles et créoles', pese: 3, or: 3, lot: 1, check: 'Poussettes en or ou en métal ?' },
+    { n: 12, name: 'Paire de créoles moyennes', short: 'Créoles moyennes', pese: 2, or: 2, lot: 1, check: '' }
   ];
+  const invSum = (f) => INVENTAIRE.filter(f).reduce((a, it) => a + it.or, 0);
+  const G_ALL = invSum((it) => it.lot > 0), G_T1 = invSum((it) => it.lot === 1), G_T2 = invSum((it) => it.lot === 2), G_KEPT = invSum((it) => it.lot === 0);
+  // L'estimateur part des bijoux à vendre, en poids d'or estimé.
+  const DEFAULT_LOTS = INVENTAIRE.filter((it) => it.lot > 0).map((it) => ({ name: 'n° ' + it.n + ' · ' + it.short, carat: '18', g: it.or }));
 
   /* ---------- État (préférences du visiteur, dans ce navigateur) ---------- */
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}') || {}; } catch (e) { saved = {}; }
-  const validLots = Array.isArray(saved.lots) && saved.lots.length > 0;
+  const validLots = Array.isArray(saved.lots) && saved.lots.length > 0 && saved.isExample === false;
   const state = {
     live: REF,
     spotOverride: typeof saved.spotOverride === 'number' && saved.spotOverride > 0 ? saved.spotOverride : null,
@@ -106,7 +119,19 @@
       vsAvg: signedPct(s / AVG_2026 - 1),
       avg2026: F2.format(AVG_2026),
       x2016: F1.format(s / AVG_2016),
-      x2021: F1.format(s / AVG_2021)
+      x2021: F1.format(s / AVG_2021),
+      lotG: F1.format(G_ALL),
+      lot85: eur(G_ALL * s * 0.75 * 0.85),
+      t1G: F1.format(G_T1),
+      t185: eur(G_T1 * s * 0.75 * 0.85),
+      t2G: F1.format(G_T2),
+      t285: eur(G_T2 * s * 0.75 * 0.85),
+      keptG: F1.format(G_KEPT),
+      seuil90: F0.format(5000 / (G_ALL * 0.75 * 0.9)),
+      seuil85: F0.format(5000 / (G_ALL * 0.75 * 0.85)),
+      taxLine: G_ALL * s * 0.75 * 0.85 <= 5000
+        ? 'à 85 %, le lot reste sous le seuil de 5 000 € : pas de taxe.'
+        : 'à 85 %, le lot dépasse le seuil de 5 000 € : vendre en deux fois pour éviter la taxe de 6,5 %.'
     };
     document.querySelectorAll('[data-bind]').forEach((el) => {
       const k = el.getAttribute('data-bind');
@@ -516,12 +541,36 @@
         if (en.isIntersecting) navLinks.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id));
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['bref', 'quand', 'ou', 'sources'].forEach((id) => { const el = $(id); if (el) io.observe(el); });
+    ['bref', 'lot', 'quand', 'ou', 'sources'].forEach((id) => { const el = $(id); if (el) io.observe(el); });
+  }
+
+  /* ---------- Inventaire ---------- */
+  const DEST = {
+    1: '<span class="pill good">Tranche 1</span> maintenant',
+    2: '<span class="pill warn">Tranche 2</span> plus tard',
+    0: '<span class="pill neutral">Conservée</span>'
+  };
+  function renderInventory() {
+    const body = $('inv-body');
+    if (!body) return;
+    const o85 = spot() * 0.75 * 0.85;
+    const g = (v) => (Number.isInteger(v) ? F0 : F1).format(v) + ' g';
+    body.innerHTML = INVENTAIRE.map((it) =>
+      '<tr' + (it.lot === 0 ? ' class="kept"' : '') + '>' +
+      '<td class="n">' + it.n + '</td>' +
+      '<td>' + it.name + '</td>' +
+      '<td class="n">' + g(it.pese) + (it.note ? '<span class="sub">' + it.note + '</span>' : '') + '</td>' +
+      '<td class="n">' + g(it.or) + '</td>' +
+      '<td>' + DEST[it.lot] + '</td>' +
+      '<td>' + (it.check || '—') + '</td>' +
+      '<td class="n">' + (it.lot ? eur(it.or * o85) : '—') + '</td></tr>'
+    ).join('');
   }
 
   /* ---------- Rendu ---------- */
   function renderAll() {
     renderBinds();
+    renderInventory();
     renderThresholds();
     renderTotals();
     drawChart();
