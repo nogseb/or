@@ -18,7 +18,7 @@
   const ANNUAL = [36.3, 35.8, 34.5, 40.0, 49.8, 48.9, 55.0, 57.7, 70.9, 97.5, 125.9];
   const MONTHLY = [112.15, 113.66, 118.34, 130.13, 136.48, 135.03, 129.61, 126.31, 118.0, 114.64, 122.33, 120.81];
   const MONTHS = ['oct.', 'nov.', 'déc.', 'janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.'];
-  let SPOT = 118.6;
+  let SPOT = 114.69;
   const nf = (d) => new Intl.NumberFormat('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
   const F0 = nf(0), F1 = nf(1), F2 = nf(2);
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');

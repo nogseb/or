@@ -5,10 +5,10 @@
   /* ---------- Données ---------- */
   const STORE_KEY = 'or-toulouse-v1';
   const REF = {
-    eur_g: 118.6,
-    updated: '2026-10-20T08:00:00+02:00',
+    eur_g: 114.69,
+    updated: '2026-10-25T10:59:00+01:00',
     status: 'reference',
-    source: 'GOLDMARKET, Gold.fr, BullionVault'
+    source: 'Gold.fr'
   };
   const RECORD = 146.2;      // €/g, sommet en euros début mars 2026
   const AVG_2026 = 125.93;   // €/g, moyenne janvier–septembre 2026
@@ -32,7 +32,7 @@
     { label: 'avril 2026', s: 'avr.', v: 129.61 }, { label: 'mai 2026', s: 'mai', v: 126.31 },
     { label: 'juin 2026', s: 'juin', v: 118.0 }, { label: 'juillet 2026', s: 'juil.', v: 114.64 },
     { label: 'août 2026', s: 'août', v: 122.33 }, { label: 'septembre 2026', s: 'sept.', v: 120.81 },
-    { label: 'octobre 2026', s: 'oct.', v: 119.22, partial: true, note: 'du 1er au 19' }
+    { label: 'octobre 2026', s: 'oct.', v: 118.63, partial: true, note: 'du 1er au 23' }
   ];
   const SHOPS = [
     { id: 'godot', name: 'Godot & Fils' },
@@ -146,7 +146,7 @@
       const when = isNaN(d) ? '' : d.toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' });
       src.textContent = 'Cours au ' + when + ' (' + (state.live.source || 'gold-api.com, taux BCE') + '). Mise à jour automatique chaque jour ouvré.';
     } else {
-      src.textContent = 'Cours de référence relevé le 20 octobre 2026 au matin (' + REF.source + '). Mise à jour automatique chaque jour ouvré.';
+      src.textContent = 'Cours de référence relevé le 25 octobre 2026 (' + REF.source + '). Mise à jour automatique chaque jour ouvré.';
     }
     const input = $('spot-input');
     if (document.activeElement !== input) input.value = s.toFixed(2);
@@ -276,7 +276,7 @@
     document.querySelectorAll('.only-monthly').forEach((el) => { el.hidden = annual; });
     $('chart-note').innerHTML = annual
       ? 'Moyennes annuelles. 2016–2025 : estimations calculées à partir des moyennes LBMA en dollars et du taux moyen BCE, arrondies. 2026 : janvier à septembre.<sup class="ref"><a href="#src-4">4</a></sup>'
-      : 'Moyennes mensuelles.<sup class="ref"><a href="#src-4">4</a></sup> Octobre 2026 : moyenne des clôtures du 1er au 19 octobre (point évidé).<sup class="ref"><a href="#src-5">5</a></sup>';
+      : 'Moyennes mensuelles.<sup class="ref"><a href="#src-4">4</a></sup> Octobre 2026 : moyenne des clôtures du 1er au 23 octobre (point évidé).<sup class="ref"><a href="#src-5">5</a></sup>';
   }
 
   function setReadout(i) {

@@ -39,6 +39,14 @@ Le workflow **Publier le site or** génère `dist/` puis l'envoie en SFTP vers `
 
 Cours du jour : once d'or en dollars ([gold-api.com](https://gold-api.com)) convertie au taux de référence BCE ([Frankfurter](https://frankfurter.dev)). Si une source ne répond pas, le cours de référence de `site/data/cours.json` est conservé.
 
+## Alerte de cours
+
+À chaque publication (push, lancement manuel, et deux fois par jour ouvré), `scripts/alerte.py` compare le cours relevé aux seuils de la variable de dépôt `OR_ALERTES` (par défaut `120,125` €/g). Au premier passage au-dessus d'un seuil, une issue étiquetée `alerte-or` est ouverte et mentionne @nogseb : GitHub envoie la notification par e-mail et dans son application. L'issue se referme d'elle-même quand le cours repasse 2 €/g sous le seuil, ce qui réarme l'alerte.
+
+- Changer les seuils : Settings > Secrets and variables > Actions > Variables > `OR_ALERTES` (ex. `118,125`).
+- Tester : onglet Actions > Publier le site or > Run workflow, avec un seuil bas et la case « Alerte de test ».
+- Le 120 €/g est une pré-alerte ; le seuil le plus haut est le seuil de vente de la tranche 2.
+
 GitHub suspend les tâches planifiées d'un dépôt resté 60 jours sans activité : un push ou un lancement manuel les réactive.
 
 ## Mise à jour des données

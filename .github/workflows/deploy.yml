@@ -8,6 +8,8 @@
 #
 # Déclencheurs : chaque push sur main, lancement manuel, et deux fois par jour ouvré pour
 # rafraîchir le cours de l'or affiché (data/cours.json).
+# Alerte : au passage du cours au-dessus d'un seuil (variable OR_ALERTES, par défaut 120,125 €/g),
+# une issue mentionnant le propriétaire est ouverte (notification e-mail), puis refermée sous le seuil.
 # Sans les secrets, le site est généré et vérifié, mais rien n'est envoyé.
 # Les fichiers sont ajoutés ou remplacés ; rien n'est supprimé sur le serveur.
 
@@ -18,6 +20,15 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      seuils:
+        description: "Seuils d'alerte en €/g, séparés par des virgules (vide : valeur du dépôt)"
+        required: false
+        default: ""
+      test:
+        description: "Alerte de test (titre préfixé [Test])"
+        type: boolean
+        default: false
   schedule:
     - cron: "17 6 * * 1-5"    # 8h17 à Paris en heure d'été, 7h17 en hiver
     - cron: "47 15 * * 1-5"   # 17h47 à Paris en heure d'été, 16h47 en hiver (après le fixing de l'après-midi)
@@ -28,6 +39,7 @@ concurrency:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   build-deploy:
@@ -55,6 +67,14 @@ jobs:
           python3 scripts/build.py
           echo "Site généré : $(find dist -type f | wc -l) fichiers" >> "$GITHUB_STEP_SUMMARY"
           echo '```json' >> "$GITHUB_STEP_SUMMARY"; cat dist/data/cours.json >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Alerte si le cours dépasse un seuil
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SEUILS: ${{ inputs.seuils || vars.OR_ALERTES || '120,125' }}
+          ALERTE_TEST: ${{ inputs.test && '1' || '' }}
+        run: python3 scripts/alerte.py | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Vérifier la configuration de publication
         id: check

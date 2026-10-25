@@ -25,17 +25,17 @@
     <div class="board" aria-live="polite">
       <div class="cell gold">
         <span class="k">Or fin (24 carats)</span>
-        <span class="v"><span data-bind="spot">118,60</span><small>€/g</small></span>
-        <span class="d"><span data-bind="vsRecord">−19 %</span> sous le record de mars 2026</span>
+        <span class="v"><span data-bind="spot">114,69</span><small>€/g</small></span>
+        <span class="d"><span data-bind="vsRecord">−22 %</span> sous le record de mars 2026</span>
       </div>
       <div class="cell">
         <span class="k">Or 18 carats (750 ‰), valeur métal</span>
-        <span class="v"><span data-bind="spot18">88,95</span><small>€/g</small></span>
+        <span class="v"><span data-bind="spot18">86,02</span><small>€/g</small></span>
         <span class="d">75 % d'or fin par gramme de bijou</span>
       </div>
       <div class="cell">
         <span class="k">Offre à viser en comptoir</span>
-        <span class="v">≥ <span data-bind="t85">75,61</span><small>€/g</small></span>
+        <span class="v">≥ <span data-bind="t85">73,11</span><small>€/g</small></span>
         <span class="d">85 % de la valeur métal, en 18 carats</span>
       </div>
       <div class="cell">
@@ -46,10 +46,10 @@
     </div>
 
     <div class="board-foot">
-      <p class="src" id="board-source">Cours de référence relevé le 20 octobre 2026 au matin (GOLDMARKET, Gold.fr, BullionVault).</p>
+      <p class="src" id="board-source">Cours de référence relevé le 25 octobre 2026 (Gold.fr).</p>
       <div class="spot-ctl">
         <label for="spot-input">Cours utilisé pour les calculs</label>
-        <input type="number" id="spot-input" min="20" max="500" step="0.01" inputmode="decimal" value="118.60">
+        <input type="number" id="spot-input" min="20" max="500" step="0.01" inputmode="decimal" value="114.69">
         <span>€/g</span>
         <button type="button" class="btn-ghost" id="spot-reset" hidden>Revenir au cours du jour</button>
       </div>
@@ -75,11 +75,11 @@
   <div class="facts">
     <article>
       <h3>Le cours est haut, mais plus au sommet</h3>
-      <p>À <strong><span data-bind="spot">118,60</span> €/g</strong>, l'or fin vaut <span data-bind="x2016">3,3</span> fois sa moyenne de 2016 et <span data-bind="x2021">2,4</span> fois celle de 2021. Il reste <span data-bind="vsRecord">−19 %</span> sous le record atteint début mars 2026, vers 146 €/g.<sup class="ref"><a href="#src-7">7</a></sup></p>
+      <p>À <strong><span data-bind="spot">114,69</span> €/g</strong>, l'or fin vaut <span data-bind="x2016">3,2</span> fois sa moyenne de 2016 et <span data-bind="x2021">2,3</span> fois celle de 2021. Il reste <span data-bind="vsRecord">−22 %</span> sous le record atteint début mars 2026, vers 146 €/g.<sup class="ref"><a href="#src-7">7</a></sup></p>
     </article>
     <article>
       <h3>Le comptoir compte plus que la date</h3>
-      <p>Entre une offre à 75 % et une offre à 88 % de la valeur métal, votre chèque varie de <strong>17 %</strong>. Sur le dernier mois, le cours a bougé de 6 %.<sup class="ref"><a href="#src-3">3</a></sup> Faire jouer la concurrence rapporte plus, à coup sûr, que deviner le bon jour.</p>
+      <p>Entre une offre à 75 % et une offre à 88 % de la valeur métal, votre chèque varie de <strong>17 %</strong>. Sur le dernier mois, le cours a perdu 5 %, dont 4 % sur la seule semaine du 19 octobre.<sup class="ref"><a href="#src-3">3</a></sup> Faire jouer la concurrence rapporte plus, à coup sûr, que deviner le bon jour.</p>
     </article>
     <article>
       <h3>Pas d'impôt sous 5 000 € par vente</h3>
@@ -88,7 +88,7 @@
   </div>
   <div class="reco">
     <p class="tag">Recommandation · à arbitrer</p>
-    <p><strong>Vendre en deux tranches.</strong> Tranche 1 dès maintenant : l'or sans pierres (collier, chaîne, créoles), <span data-bind="t1G">38,0</span> g, soit environ <span data-bind="t185">2 778 €</span>, dès qu'un comptoir offre au moins <strong><span data-bind="t85">75,61</span> €/g</strong> en 18 carats. Tranche 2 plus tard : pendentifs, créoles fines, alliances, scarabée et bracelet (<span data-bind="t2G">20,2</span> g), après vérification des poinçons, si l'or pur repasse au-dessus de 125 €/g ou au plus tard fin mars 2027. Les bagues serties n° 6 et 7 sont conservées. Le détail est dans <a href="#lot">Mon lot</a>.</p>
+    <p><strong>Vendre en deux tranches.</strong> Tranche 1 dès maintenant : l'or sans pierres (collier, chaîne, créoles), <span data-bind="t1G">38,0</span> g, soit environ <span data-bind="t185">2 778 €</span>, dès qu'un comptoir offre au moins <strong><span data-bind="t85">73,11</span> €/g</strong> en 18 carats. Tranche 2 plus tard : pendentifs, créoles fines, alliances, scarabée et bracelet (<span data-bind="t2G">20,2</span> g), après vérification des poinçons, si l'or pur repasse au-dessus de 125 €/g ou au plus tard fin mars 2027. Les bagues serties n° 6 et 7 sont conservées. Le détail est dans <a href="#lot">Mon lot</a>.</p>
   </div>
 </section>
 
@@ -153,7 +153,7 @@
     </div>
     <div class="chart" id="chart" role="img" aria-label="Graphique du cours de l'or fin en euros par gramme"></div>
     <div class="legend">
-      <span><i class="l-spot"></i>Cours utilisé (<span data-bind="spot">118,60</span> €/g)</span>
+      <span><i class="l-spot"></i>Cours utilisé (<span data-bind="spot">114,69</span> €/g)</span>
       <span><i class="l-rec"></i>Record en euros, début mars 2026 (≈ 146 €/g)</span>
       <span class="only-monthly"><i class="l-thr"></i>Votre seuil haut</span>
       <span class="only-monthly"><i class="l-low"></i>Votre plancher</span>
@@ -171,26 +171,26 @@
       <p>L'once atteint le record mondial de <strong>5 595 $ le 29 janvier 2026</strong>.<sup class="ref"><a href="#src-8">8</a></sup> En euros, le sommet se situe début mars, vers 146 €/g.<sup class="ref"><a href="#src-7">7</a></sup> La moyenne mensuelle culmine à 136,5 €/g en février.<sup class="ref"><a href="#src-4">4</a></sup></p>
     </div>
     <div>
-      <h3>Depuis : correction puis plateau</h3>
-      <p>Repli jusqu'à 114,6 €/g de moyenne en juillet, rebond à 122,3 €/g en août, puis plateau autour de 119 €/g en octobre. Sur un mois : −6 % ; sur six mois : −14 % ; sur un an : −3 % ; <strong>sur cinq ans : +133 %</strong>.<sup class="ref"><a href="#src-3">3</a></sup></p>
+      <h3>Depuis : correction, plateau, nouvelle baisse</h3>
+      <p>Repli jusqu'à 114,6 €/g de moyenne en juillet, rebond à 122,3 €/g en août, plateau autour de 119 €/g début octobre, puis nouvelle baisse la semaine du 19 octobre : <strong>115,1 €/g le 23</strong>, au plus bas depuis début juin en dollars. Sur une semaine : −3,8 % ; un mois : −4,7 % ; six mois : −11 % ; un an : +1 % ; <strong>cinq ans : +132 %</strong>.<sup class="ref"><a href="#src-3">3</a></sup><sup class="ref"><a href="#src-32">32</a></sup></p>
     </div>
   </div>
 
   <div class="block">
     <h3>Ce que disent les prévisions</h3>
-    <p class="intro">Les projections publiées vont d'une baisse de 9 % à une hausse de 30 %. Personne ne connaît le prochain mouvement, ce qui plaide pour ne pas tout vendre sur une seule date.</p>
+    <p class="intro">Les projections publiées vont d'une baisse de 9 % à une hausse de 35 %. Personne ne connaît le prochain mouvement, ce qui plaide pour ne pas tout vendre sur une seule date.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Source</th><th>Horizon</th><th class="n">Prévision ($/once)</th><th class="n">Équivalent (€/g)</th><th>Statut</th></tr></thead>
         <tbody>
-          <tr><td>Trading Economics, modèle<sup class="ref"><a href="#src-9">9</a></sup><span class="sub">publié le 19 octobre 2026</span></td><td>Fin 2026</td><td class="n">4 084</td><td class="n">≈ 117</td><td><span class="pill neutral">Stable</span></td></tr>
-          <tr><td>Trading Economics, modèle<sup class="ref"><a href="#src-9">9</a></sup></td><td>Octobre 2027</td><td class="n">3 784</td><td class="n">≈ 108</td><td><span class="pill bad">Baisse</span></td></tr>
+          <tr><td>Trading Economics, modèle<sup class="ref"><a href="#src-9">9</a></sup><span class="sub">publié le 23 octobre 2026</span></td><td>Fin 2026</td><td class="n">3 923</td><td class="n">≈ 113</td><td><span class="pill neutral">Stable</span></td></tr>
+          <tr><td>Trading Economics, modèle<sup class="ref"><a href="#src-9">9</a></sup></td><td>Octobre 2027</td><td class="n">3 630</td><td class="n">≈ 104</td><td><span class="pill bad">Baisse</span></td></tr>
           <tr><td>Consensus des analystes LBMA<sup class="ref"><a href="#src-10">10</a></sup><span class="sub">fixé début 2026</span></td><td>Moyenne 2026</td><td class="n">4 742</td><td class="n">≈ 136</td><td><span class="pill neutral">Indicatif</span></td></tr>
           <tr><td>Goldman Sachs<sup class="ref"><a href="#src-11">11</a></sup><span class="sub">relevé en janvier 2026, avant la correction</span></td><td>Décembre 2026</td><td class="n">5 400</td><td class="n">≈ 155</td><td><span class="pill good">Hausse</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Conversion au taux du 19 octobre 2026 (1 € ≈ 1,12 $) ; 1 once troy = 31,10 g. Fin septembre 2026, l'or cotait encore environ un quart sous son record.<sup class="ref"><a href="#src-30">30</a></sup></p>
+    <p class="note">Conversion au taux du 23 octobre 2026 (1 € ≈ 1,12 $) ; 1 once troy = 31,10 g. Sondage Kitco du 23 octobre : 41 % des analystes de Wall Street attendent une nouvelle baisse la semaine suivante, 24 % une hausse. À suivre : décision de la Fed le 28 octobre, de la BCE le 29.<sup class="ref"><a href="#src-33">33</a></sup></p>
   </div>
 
   <div class="block">
@@ -258,26 +258,26 @@
 
   <div class="block">
     <h3>Ce qu'est une bonne offre aujourd'hui</h3>
-    <p class="intro">Prix au gramme d'or 18 carats, au cours utilisé de <span data-bind="spot">118,60</span> €/g (valeur métal : <span data-bind="spot18">88,95</span> €/g).</p>
+    <p class="intro">Prix au gramme d'or 18 carats, au cours utilisé de <span data-bind="spot">114,69</span> €/g (valeur métal : <span data-bind="spot18">86,02</span> €/g).</p>
     <div class="scale">
-      <div class="s-good"><small>Bonne offre · 85 % et plus</small><b>≥ <span data-bind="t85">75,61</span> €/g</b></div>
-      <div class="s-ok"><small>Correcte · 80 à 85 %</small><b><span data-bind="t80">71,16</span> à <span data-bind="t85">75,61</span></b></div>
-      <div class="s-warn"><small>Faible, à négocier · 75 à 80 %</small><b><span data-bind="t75">66,71</span> à <span data-bind="t80">71,16</span></b></div>
-      <div class="s-bad"><small>À refuser · moins de 75 %</small><b>&lt; <span data-bind="t75">66,71</span> €/g</b></div>
+      <div class="s-good"><small>Bonne offre · 85 % et plus</small><b>≥ <span data-bind="t85">73,11</span> €/g</b></div>
+      <div class="s-ok"><small>Correcte · 80 à 85 %</small><b><span data-bind="t80">68,81</span> à <span data-bind="t85">73,11</span></b></div>
+      <div class="s-warn"><small>Faible, à négocier · 75 à 80 %</small><b><span data-bind="t75">64,51</span> à <span data-bind="t80">68,81</span></b></div>
+      <div class="s-bad"><small>À refuser · moins de 75 %</small><b>&lt; <span data-bind="t75">64,51</span> €/g</b></div>
     </div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Repère publié</th><th>Date</th><th class="n">Prix 18 carats</th><th class="n">Part de la valeur métal</th></tr></thead>
         <tbody>
           <tr><td>Cookson-CLAL, rachat aux particuliers<sup class="ref"><a href="#src-12">12</a></sup></td><td>19/10/2026</td><td class="n">71,72 €/g</td><td class="n">≈ 81 %</td></tr>
-          <tr><td>Anthéor (Paris), 18 carats destiné à la fonte<sup class="ref"><a href="#src-14">14</a></sup></td><td>15/10/2026</td><td class="n">74 à 79 €/g</td><td class="n">83 à 88 %</td></tr>
-          <tr><td>Monex Or (Bordeaux), prix net versé<sup class="ref"><a href="#src-13">13</a></sup></td><td>06/10/2026</td><td class="n">77,45 €/g</td><td class="n">≈ 87 %</td></tr>
+          <tr><td>Anthéor (Paris), 18 carats destiné à la fonte<sup class="ref"><a href="#src-14">14</a></sup></td><td>25/10/2026</td><td class="n">70 à 75 €/g</td><td class="n">81 à 87 %</td></tr>
+          <tr><td>Monex Or (Bordeaux), prix net versé<sup class="ref"><a href="#src-13">13</a></sup></td><td>25/10/2026</td><td class="n">74,94 €/g</td><td class="n">≈ 87 %</td></tr>
           <tr><td>Fourchette « réaliste » d'un site de cotation<sup class="ref"><a href="#src-15">15</a></sup></td><td>17/10/2026</td><td class="n">62 à 80 €/g</td><td class="n">70 à 90 %</td></tr>
-          <tr><td>Seuil d'alerte cité par la presse<sup class="ref"><a href="#src-27">27</a></sup><span class="sub">exigeant : à viser sur un lot important</span></td><td>11/10/2026</td><td class="n">80 €/g</td><td class="n">≈ 90 %</td></tr>
+          <tr><td>Seuil d'alerte cité par la presse<sup class="ref"><a href="#src-27">27</a></sup><span class="sub">fixé avec un cours plus haut : hors d'atteinte aujourd'hui</span></td><td>11/10/2026</td><td class="n">80 €/g</td><td class="n">≈ 93 %</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Chez Anthéor, le prix monte avec le volume : environ 74 €/g autour de 10 g, jusqu'à 79 €/g à partir de 100 g. Regrouper tous vos bijoux 18 carats dans un même lot peut donc améliorer le prix au gramme.</p>
+    <p class="note">Parts de la valeur métal calculées au cours du 25 octobre (114,69 €/g, soit 86,02 €/g en 18 carats). Chez Anthéor, le prix monte avec le volume : environ 70 €/g autour de 10 g, jusqu'à 75 €/g à partir de 100 g. Regrouper tous vos bijoux 18 carats dans un même lot peut donc améliorer le prix au gramme.</p>
   </div>
 
   <div class="block">
@@ -472,22 +472,22 @@
 <footer class="sources" id="sources">
   <div class="wrap">
     <h2>Sources</h2>
-    <p class="disclaimer">Informations relevées le 20 octobre 2026, à titre indicatif. Elles ne constituent ni un conseil en investissement ni un conseil fiscal ; horaires, prix et conditions sont à confirmer auprès de chaque enseigne. Moyennes annuelles 2016–2025 : estimations calculées à partir des moyennes LBMA en dollars et du taux de change moyen de la BCE, arrondies. Cours du jour mis à jour automatiquement chaque jour ouvré (gold-api.com et taux de référence BCE via Frankfurter).</p>
+    <p class="disclaimer">Informations relevées le 20 octobre 2026, analyses du cours et repères de prix actualisés le 25 octobre 2026, à titre indicatif. Elles ne constituent ni un conseil en investissement ni un conseil fiscal ; horaires, prix et conditions sont à confirmer auprès de chaque enseigne. Moyennes annuelles 2016–2025 : estimations calculées à partir des moyennes LBMA en dollars et du taux de change moyen de la BCE, arrondies. Cours du jour mis à jour automatiquement chaque jour ouvré (gold-api.com et taux de référence BCE via Frankfurter).</p>
     <ol>
       <li id="src-1"><a href="https://www.goldmarket.fr/cours-or/" rel="noopener">GOLDMARKET, cours de l'or (16/10/2026)</a></li>
-      <li id="src-2"><a href="https://www.gold.fr/cours-or-prix-de-l-or/" rel="noopener">Gold.fr, cours et cotation de l'or (19–20/10/2026)</a></li>
-      <li id="src-3"><a href="https://www.goldavenue.com/fr/cours-or/eur/1-an" rel="noopener">GoldAvenue, performance historique de l'or en euros (20/10/2026)</a></li>
+      <li id="src-2"><a href="https://www.gold.fr/impression-cours/" rel="noopener">Gold.fr, cours de l'or (25/10/2026)</a></li>
+      <li id="src-3"><a href="https://www.goldavenue.com/fr/cours-or/eur/historique" rel="noopener">GoldAvenue, performance historique de l'or en euros (25/10/2026)</a></li>
       <li id="src-4"><a href="https://fr.countryeconomy.com/marches/matieres-premieres/or" rel="noopener">countryeconomy.com, prix de l'or par once, moyennes mensuelles</a></li>
       <li id="src-5"><a href="https://fr.investing.com/currencies/xau-eur-historical-data" rel="noopener">Investing.com, données historiques XAU/EUR</a></li>
       <li id="src-6"><a href="https://fr.bullion-rates.com/gold/EUR/2026-1-history.htm" rel="noopener">BullionRates, cours de l'or en euros, janvier 2026</a></li>
       <li id="src-7"><a href="https://www.economiematin.fr/?p=214095" rel="noopener">EconomieMatin, cours de l'or du 3 mars 2026</a></li>
       <li id="src-8"><a href="https://www.ebc.com/forex/gold-highest-price-ever-xauusd-record-2026" rel="noopener">EBC, record historique de l'or (29/01/2026)</a></li>
-      <li id="src-9"><a href="https://tradingeconomics.com/commodity/gold" rel="noopener">Trading Economics, Gold (19/10/2026)</a></li>
+      <li id="src-9"><a href="https://tradingeconomics.com/commodity/gold" rel="noopener">Trading Economics, Gold (23/10/2026)</a></li>
       <li id="src-10"><a href="https://www.bullionvault.com/gold-news/infographics/ai-gold-precious-metal-price-forecasts" rel="noopener">BullionVault, prévisions 2026 et consensus LBMA</a></li>
       <li id="src-11"><a href="https://www.cnbc.com/2026/01/26/gold-record-surges-past-new-5000-record.html" rel="noopener">CNBC, Gold surges past $5,100 (26/01/2026)</a></li>
       <li id="src-12"><a href="https://www.cookson-clal.com/cours/" rel="noopener">Cookson-CLAL, rachat aux particuliers (19/10/2026)</a></li>
-      <li id="src-13"><a href="https://monexor.fr/guide/prix-or-18-carats-bordeaux" rel="noopener">Monex Or, prix de l'or 18 carats (06/10/2026)</a></li>
-      <li id="src-14"><a href="https://www.antheor-paris.fr/prix-rachat-or/" rel="noopener">Anthéor, prix de rachat de l'or (15/10/2026)</a></li>
+      <li id="src-13"><a href="https://monexor.fr/guide/prix-or-18-carats-bordeaux" rel="noopener">Monex Or, prix de l'or 18 carats (25/10/2026)</a></li>
+      <li id="src-14"><a href="https://www.antheor-paris.fr/prix-rachat-or/" rel="noopener">Anthéor, prix de rachat de l'or (25/10/2026)</a></li>
       <li id="src-15"><a href="https://prixdugramme.fr/prix-or-18-carats" rel="noopener">Prix du Gramme, prix de l'or 18 carats (17/10/2026)</a></li>
       <li id="src-16"><a href="https://www.goldmarket.fr/achat-or-toulouse-31000/" rel="noopener">GOLDMARKET Toulouse, fiche agence</a></li>
       <li id="src-17"><a href="https://www.gold.fr/comptoirsachatventeor/toulouse/" rel="noopener">Gold.fr – Le Comptoir National, agence de Toulouse</a></li>
@@ -505,6 +505,8 @@
       <li id="src-29"><a href="https://www.gold.fr/achat-or/a/toulouse/" rel="noopener">Gold.fr, comptoir de Toulouse et avis Google</a></li>
       <li id="src-30"><a href="https://metalcharts.org/guides/gold-price-forecast" rel="noopener">MetalCharts, prévisions 2026–2027</a></li>
       <li id="src-31"><a href="https://www.finances-actu.fr/vente-dor-en-2026-taxe-de-115-sur-les-lingots-et-pieces-65-sur-les-bijoux-au-dela-de-5-000-euros-43415522026.html" rel="noopener">Finances Actu, vente d'or en 2026 : seuil des 5 000 € et ventes fractionnées</a></li>
+      <li id="src-32"><a href="https://coursdelor.app/historique-cours-or.html" rel="noopener">Coursdelor.app, historique quotidien du cours de l'or en euros (25/10/2026)</a></li>
+      <li id="src-33"><a href="https://www.kitco.com/news/article/2026-10-23/wall-street-doubts-golds-near-term-strength-main-street-maintains-bullish" rel="noopener">Kitco, sondage hebdomadaire sur l'or (23/10/2026)</a></li>
     </ol>
   </div>
 </footer>
