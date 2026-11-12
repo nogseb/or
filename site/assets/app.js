@@ -5,13 +5,13 @@
   /* ---------- Données ---------- */
   const STORE_KEY = 'or-toulouse-v1';
   const REF = {
-    eur_g: 114.69,
-    updated: '2026-10-25T10:59:00+01:00',
+    eur_g: 113.92,
+    updated: '2026-11-12T10:44:00+01:00',
     status: 'reference',
-    source: 'Gold.fr'
+    source: 'gold-api.com, taux BCE'
   };
   const RECORD = 146.2;      // €/g, sommet en euros début mars 2026
-  const AVG_2026 = 125.93;   // €/g, moyenne janvier–septembre 2026
+  const AVG_2026 = 125.13;   // €/g, moyenne janvier–octobre 2026
   const AVG_2016 = 36.3;
   const AVG_2021 = 48.9;
   const TITRES = { '24': 0.999, '22': 0.916, '18': 0.75, '14': 0.585, '9': 0.375 };
@@ -22,17 +22,18 @@
     { label: '2016', v: 36.3 }, { label: '2017', v: 35.8 }, { label: '2018', v: 34.5 },
     { label: '2019', v: 40.0 }, { label: '2020', v: 49.8 }, { label: '2021', v: 48.9 },
     { label: '2022', v: 55.0 }, { label: '2023', v: 57.7 }, { label: '2024', v: 70.9 },
-    { label: '2025', v: 97.5 }, { label: '2026', v: 125.9, partial: true, note: 'janvier à septembre' }
+    { label: '2025', v: 97.5 }, { label: '2026', v: 125.1, partial: true, note: 'janvier à octobre' }
   ];
-  // Moyennes mensuelles en €/g (countryeconomy.com ; octobre 2026 : clôtures du 1er au 19).
+  // Moyennes mensuelles en €/g (countryeconomy.com ; octobre et novembre 2026 : clôtures quotidiennes coursdelor.app,
+  // novembre du 2 au 11).
   const MONTHLY = [
-    { label: 'octobre 2025', s: 'oct.', v: 112.15 }, { label: 'novembre 2025', s: 'nov.', v: 113.66 },
-    { label: 'décembre 2025', s: 'déc.', v: 118.34 }, { label: 'janvier 2026', s: 'janv.', v: 130.13 },
-    { label: 'février 2026', s: 'févr.', v: 136.48 }, { label: 'mars 2026', s: 'mars', v: 135.03 },
-    { label: 'avril 2026', s: 'avr.', v: 129.61 }, { label: 'mai 2026', s: 'mai', v: 126.31 },
-    { label: 'juin 2026', s: 'juin', v: 118.0 }, { label: 'juillet 2026', s: 'juil.', v: 114.64 },
-    { label: 'août 2026', s: 'août', v: 122.33 }, { label: 'septembre 2026', s: 'sept.', v: 120.81 },
-    { label: 'octobre 2026', s: 'oct.', v: 118.63, partial: true, note: 'du 1er au 23' }
+    { label: 'novembre 2025', s: 'nov.', v: 113.66 }, { label: 'décembre 2025', s: 'déc.', v: 118.34 },
+    { label: 'janvier 2026', s: 'janv.', v: 130.13 }, { label: 'février 2026', s: 'févr.', v: 136.48 },
+    { label: 'mars 2026', s: 'mars', v: 135.03 }, { label: 'avril 2026', s: 'avr.', v: 129.61 },
+    { label: 'mai 2026', s: 'mai', v: 126.31 }, { label: 'juin 2026', s: 'juin', v: 118.0 },
+    { label: 'juillet 2026', s: 'juil.', v: 114.64 }, { label: 'août 2026', s: 'août', v: 122.33 },
+    { label: 'septembre 2026', s: 'sept.', v: 120.81 }, { label: 'octobre 2026', s: 'oct.', v: 117.94 },
+    { label: 'novembre 2026', s: 'nov.', v: 115.86, partial: true, note: 'du 2 au 11' }
   ];
   const SHOPS = [
     { id: 'godot', name: 'Godot & Fils' },
@@ -146,7 +147,7 @@
       const when = isNaN(d) ? '' : d.toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' });
       src.textContent = 'Cours au ' + when + ' (' + (state.live.source || 'gold-api.com, taux BCE') + '). Mise à jour automatique chaque jour ouvré.';
     } else {
-      src.textContent = 'Cours de référence relevé le 25 octobre 2026 (' + REF.source + '). Mise à jour automatique chaque jour ouvré.';
+      src.textContent = 'Cours de référence relevé le 12 novembre 2026 (' + REF.source + '). Mise à jour automatique chaque jour ouvré.';
     }
     const input = $('spot-input');
     if (document.activeElement !== input) input.value = s.toFixed(2);
@@ -205,7 +206,7 @@
     if (!annual) {
       // repères d'années sous les mois de janvier
       svg += `<text class="ch-axis" x="${x(0)}" y="${H + 4}" text-anchor="middle">2025</text>`;
-      svg += `<text class="ch-axis" x="${x(3)}" y="${H + 4}" text-anchor="middle">2026</text>`;
+      svg += `<text class="ch-axis" x="${x(2)}" y="${H + 4}" text-anchor="middle">2026</text>`;
     }
 
     // Séries
@@ -251,7 +252,7 @@
     chartEl.innerHTML = `<svg viewBox="0 0 ${W} ${H + (annual ? 0 : 8)}" width="${W}" height="${H + (annual ? 0 : 8)}" xmlns="http://www.w3.org/2000/svg">${svg}</svg>`;
     chartEl.setAttribute('aria-label', annual
       ? 'Moyennes annuelles du cours de l\'or fin en euros par gramme, de 36 € en 2016 à 126 € en 2026.'
-      : 'Moyennes mensuelles du cours de l\'or fin en euros par gramme, d\'octobre 2025 à octobre 2026, avec un pic à 136 € en février 2026.');
+      : 'Moyennes mensuelles du cours de l\'or fin en euros par gramme, de novembre 2025 à novembre 2026, avec un pic à 136 € en février 2026.');
 
     const svgEl = chartEl.querySelector('svg');
     const guide = svgEl.querySelector('#ch-guide');
@@ -275,16 +276,16 @@
 
     document.querySelectorAll('.only-monthly').forEach((el) => { el.hidden = annual; });
     $('chart-note').innerHTML = annual
-      ? 'Moyennes annuelles. 2016–2025 : estimations calculées à partir des moyennes LBMA en dollars et du taux moyen BCE, arrondies. 2026 : janvier à septembre.<sup class="ref"><a href="#src-4">4</a></sup>'
-      : 'Moyennes mensuelles.<sup class="ref"><a href="#src-4">4</a></sup> Octobre 2026 : moyenne des clôtures du 1er au 23 octobre (point évidé).<sup class="ref"><a href="#src-5">5</a></sup>';
+      ? 'Moyennes annuelles. 2016–2025 : estimations calculées à partir des moyennes LBMA en dollars et du taux moyen BCE, arrondies. 2026 : janvier à octobre.<sup class="ref"><a href="#src-4">4</a></sup>'
+      : 'Moyennes mensuelles.<sup class="ref"><a href="#src-4">4</a></sup> Octobre et novembre 2026 : moyennes des clôtures quotidiennes ; novembre du 2 au 11 (point évidé).<sup class="ref"><a href="#src-32">32</a></sup>';
   }
 
   function setReadout(i) {
     const annual = state.view === 'annual';
     if (i === null) {
       readout.textContent = annual
-        ? 'Moyenne 2025 : 97,5 €/g · 2026 (janv.–sept.) : 125,9 €/g · aujourd\'hui : ' + F2.format(spot()) + ' €/g'
-        : 'Pic : 136,48 €/g en février 2026 · creux : 114,64 €/g en juillet · aujourd\'hui : ' + F2.format(spot()) + ' €/g';
+        ? 'Moyenne 2025 : 97,5 €/g · 2026 (janv.–oct.) : 125,1 €/g · aujourd\'hui : ' + F2.format(spot()) + ' €/g'
+        : 'Pic : 136,48 €/g en février 2026 · creux 2026 : 114,64 €/g en juillet · aujourd\'hui : ' + F2.format(spot()) + ' €/g';
       return;
     }
     const d = chartData[i];

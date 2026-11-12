@@ -15,10 +15,10 @@
 
   const NB = ' ';
   const RECORD = 146.2;
-  const ANNUAL = [36.3, 35.8, 34.5, 40.0, 49.8, 48.9, 55.0, 57.7, 70.9, 97.5, 125.9];
-  const MONTHLY = [112.15, 113.66, 118.34, 130.13, 136.48, 135.03, 129.61, 126.31, 118.0, 114.64, 122.33, 120.81];
-  const MONTHS = ['oct.', 'nov.', 'déc.', 'janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.'];
-  let SPOT = 114.69;
+  const ANNUAL = [36.3, 35.8, 34.5, 40.0, 49.8, 48.9, 55.0, 57.7, 70.9, 97.5, 125.1];
+  const MONTHLY = [113.66, 118.34, 130.13, 136.48, 135.03, 129.61, 126.31, 118.0, 114.64, 122.33, 120.81, 117.94];
+  const MONTHS = ['nov.', 'déc.', 'janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.'];
+  let SPOT = 113.92;
   const nf = (d) => new Intl.NumberFormat('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
   const F0 = nf(0), F1 = nf(1), F2 = nf(2);
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -294,9 +294,9 @@
           if (hotPts.length > 1) { D.set(D.hot()); D.paths([hotPts], 1); }
           ctx.lineWidth = 1.3;
         }
-        if (ts > 6.4) {
-          const xp = penX - v * (ts - 6), yp = Y(f(6));
-          if (xp > left) { const a = lin(ts, 6.4, 7.0); D.set(D.cold(a)); D.cross(xp, yp, 4 * k); D.text('pic ' + F1.format(DATA[4]), xp, yp - 8 * k, 'center', a, 9.5); }
+        if (ts > 4.9) {
+          const xp = penX - v * (ts - 4.5), yp = Y(f(4.5));
+          if (xp > left) { const a = lin(ts, 4.9, 5.5); D.set(D.cold(a)); D.cross(xp, yp, 4 * k); D.text('pic ' + F1.format(DATA[3]), xp, yp - 8 * k, 'center', a, 9.5); }
         }
         const tipY = Y(f(ts)), pivot = [penX + S.w * 0.15, yT - 8 * k];
         D.set(rgba(C.ink, 0.5)); D.line(pivot[0], pivot[1], penX, tipY);

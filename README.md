@@ -9,7 +9,7 @@ Page d'aide à la décision publiée sous **https://nogues.app/or/** : quand ven
 | En bref | Synthèse et recommandation (vente en deux tranches) |
 | Quand vendre | Graphique 10 ans et 13 mois, lecture de tendance, prévisions publiées, stratégies, seuils de décision réglables, estimation des bijoux, leviers de prix |
 | Où vendre | Barème d'une bonne offre, repères de prix publiés, comparatif des comptoirs toulousains, parcours conseillé, script d'appel, comparateur de devis, check-list, fiscalité et obligations légales |
-| Sources | 31 références datées |
+| Sources | 35 références datées |
 
 Les saisies (bijoux, seuils, devis, check-list) restent dans le navigateur du visiteur (`localStorage`). La page est marquée `noindex`.
 
